@@ -11,7 +11,7 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "rootDir": "./src",
-    "module": "NodeNext",
+    "module": "ESNext",
     "target": "ES2022",
     "moduleResolution": "NodeNext"
   },
