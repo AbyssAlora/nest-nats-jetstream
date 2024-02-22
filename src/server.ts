@@ -140,10 +140,7 @@ export class NatsJetStreamServer
     );
 
     if (stream) {
-      const streamSubjects = new Set([
-        ...(streamConfig.subjects ?? []),
-        ...stream.config.subjects,
-      ]);
+      const streamSubjects = new Set([...(streamConfig.subjects ?? [])]);
 
       const streamInfo = await this.jetStreamManager!.streams.update(
         stream.config.name,
@@ -201,7 +198,7 @@ export class NatsJetStreamServer
       await this.jetStreamManager?.consumers.update(
         streamConfig.name!,
         durable_name!,
-        cfg,
+        { ...cfg, filter_subject: subject },
       );
 
       this.logger.log(
@@ -210,7 +207,10 @@ export class NatsJetStreamServer
         } updated`,
       );
     } else {
-      await this.jetStreamManager?.consumers.add(streamConfig.name!, cfg);
+      await this.jetStreamManager?.consumers.add(streamConfig.name!, {
+        ...cfg,
+        filter_subject: subject,
+      });
 
       this.logger.log(
         `Consumer ${

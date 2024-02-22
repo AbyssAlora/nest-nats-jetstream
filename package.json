@@ -1,6 +1,6 @@
 {
   "name": "nest-nats-jetstream",
-  "version": "0.0.1-beta-1",
+  "version": "0.1.0",
   "description": "NATS JetStream driver module for NestJS",
   "types": "./lib/cjs/types/index.d.ts",
   "main": "./lib/cjs/index.js",
