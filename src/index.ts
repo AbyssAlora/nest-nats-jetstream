@@ -3,3 +3,4 @@ export * from './interfaces';
 export * from './nats-jetstream-context';
 export * from './nats-jetstream.module';
 export * from './server';
+export * from './utils';
